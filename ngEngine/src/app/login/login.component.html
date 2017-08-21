@@ -1,0 +1,29 @@
+<div class="bg">
+
+</div>
+<div class="login">
+  <div class="login-main">
+    <section class="login-dialog">
+      <h2 class="title-main">Welcome</h2>
+      <form id="login-form" #loginForm="ngForm">
+        <ul>
+          <li>
+            <input type="text" placeholder="用户名" name="username" id="username" class="input" autocomplete="off" [(ngModel)]="loginInfo.username" spellcheck="false" required>
+          </li>
+          <li>
+            <input type="password" placeholder="密码" name="password" id="password" class="input" [(ngModel)]="loginInfo.password" autocomplete="off" required>
+          </li>
+          <li id="auto-login">
+            <div class="auto-login">
+              <label><input type="checkbox" name="autoLogin" [(ngModel)]="loginInfo.autoLogin">自动登录</label>
+            </div>
+          </li>
+          <li id="error-message"></li>
+          <li>
+            <input type="button" value="登录" class="submit" id="loginButton">
+          </li>
+        </ul>
+      </form>
+    </section>
+  </div>
+</div>

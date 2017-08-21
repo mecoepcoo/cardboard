@@ -1,0 +1,129 @@
+.pre(@style, @value) {
+  -webkit-@{style}: @value;
+  -moz-@{style}: @value;
+  -ms-@{style}: @value;
+  -o-@{style}: @value;
+    @{style}: @value;
+}
+
+.box-shadow(@value) {
+  .pre(box-shadow, @value);
+}
+
+.border-radius(@value) {
+  .pre(border-radius, @value);
+}
+
+.box-sizing(@value) {
+  .pre(box-sizing, @value);
+}
+
+.user-select(@value) {
+  .pre(user-select, @value);
+}
+
+.transition(@value) {
+  .pre(transition, @value);
+}
+
+
+@login_w: 380px;
+@f_size: 14px;
+@f_color_w: #fff;
+@f_color_b: #000;
+@font: "Microsoft YaHei","Ubuntu", "Sans Regular";
+html {
+  width: 100%;
+  height: 100%;
+}
+body {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  font-family: @font;
+  .user-select(none);
+}
+.bg {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  background: url("../../assets/img/loginbg.jpg") no-repeat ;
+  background-size: cover;
+}
+.login {
+  overflow: hidden;
+  padding-top: 150px;
+  width: 100%;
+  height: 100%;
+  font-size: @f_size;
+  color: @f_color_b;
+  text-align: center;
+  box-sizing: border-box;
+  .login-main {
+    margin: 0 auto;
+    width: 360px;
+    text-align: center;
+    box-sizing: border-box;
+    .login-dialog {
+      padding: 40px;
+      .box-shadow(0 0 18px rgba(0,0,0,0.2));
+      .border-radius(20px);
+      background-color: rgba(255,255,255,0.15);
+      .auto-login {
+        text-align: left;
+        color: #fff;
+        input {
+          margin-right: 5px;
+        }
+      }
+      form {
+        width: 100%;
+      }
+      ul {
+        padding-left: 0;
+        list-style: none;
+        li {
+          position: relative;
+          width: 100%;
+          height: 40px;
+          margin-top: 15px;
+          .input {
+            display: inline-block;
+            padding: 0 10px 0 10px;
+            height: 40px;
+            width: 100%;
+            text-align: center;
+            .box-sizing(border-box);
+          }
+          .submit {
+            display: block;
+            width: 100%;
+            height: 40px;
+            cursor: pointer;
+            border: 1px solid @f_color_w;
+            background-color: transparent;
+            outline: none;
+            font-size: @f_size + 2;
+            color: @f_color_w;
+            &:hover {
+              font-weight: bold;
+              border: 2px solid @f_color_w;
+            }
+          }
+        }
+        #error-message {
+          margin-top: 0;
+          height: 22px;
+          line-height: 22px;
+          font-size: @f_size + 2;
+          color: #db3333;
+        }
+      }
+    }
+  }
+
+}
