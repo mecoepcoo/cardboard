@@ -2,6 +2,8 @@
   "name": "cardboard",
   "version": "0.0.0",
   "private": false,
+  "author": "tianzhen",
+  "license": "MIT",
   "main": "main.js",
   "scripts": {
     "start": "node ./bin/www"
