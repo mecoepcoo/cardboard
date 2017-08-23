@@ -14,10 +14,8 @@ router.route('/login')
   .get((req, res, next) => {
     let username = req.query.username;
     let password = req.query.password;
-    console.log(username, password)
     let data = db.get('user').value();
-    console.log(data)
-    if (username == data.username && password == data.password) {
+    if (username === data.username && password === data.password) {
       res.status(200).json({
         status: 1,
         message: lang.OK,
