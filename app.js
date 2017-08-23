@@ -23,8 +23,17 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'dist')));
 
+app.all('*', function(req, res, next) {
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Headers', 'Origin, No-Cache, X-Requested-With, If-Modified-Since, Pragma, Last-Modified, Cache-Control, Expires, Content-Type, X-E4M-With, X-Access-Token, X-Real-IP');
+  res.header('Access-Control-Allow-Methods','PUT,POST,GET,DELETE,OPTIONS');
+  next();
+});
+
 app.use('/', index);
 app.use('/users', users);
+
+app.use('/api', require('./api/user'));
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
