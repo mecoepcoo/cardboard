@@ -1,11 +1,13 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, OnInit } from '@angular/core';
+
+import { UserService } from '../share/user.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './login.component.html',
   styleUrls: ['./login.css']
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit {
   @ViewChild('loginForm') loginForm;
 
   loginInfo = {
@@ -14,11 +16,29 @@ export class LoginComponent {
     autoLogin: false
   };
 
-  login() {
-/*    return this._adminuserService.getAdminusers()
-      .subscribe(datas => {
+  errorMessage = '';
 
-      })*/
+  constructor(
+    private _userService: UserService
+  ) { }
+
+  ngOnInit() {
+
+  }
+
+  doLogin() {
+    if (this.loginForm.valid) {
+      return this._userService.doLogin(this.loginInfo.username, this.loginInfo.password, this.loginInfo.autoLogin)
+        .subscribe(res => {
+          if (res.status === 1) {
+            this.errorMessage = res.message;
+          } else {
+            this.errorMessage = res.message;
+          }
+        });
+    } else {
+      this.errorMessage = '请将表单填写完整';
+    }
   }
 
 
