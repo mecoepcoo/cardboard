@@ -12,10 +12,27 @@ router.route('/login')
  * 登录操作
  */
   .get((req, res, next) => {
+    let autoDate = db.get('user').value().auto;
+    if (new Date().getTime() < autoDate) {
+      return res.status(200).json({
+        status: 1,
+        message: lang.OK,
+      });
+    }
     let username = req.query.username;
     let password = req.query.password;
+    let auto = +req.query.auto;
+
     let data = db.get('user').value();
     if (username === data.username && password === data.password) {
+      if (auto) {
+        let dateNow = new Date();
+        let day = dateNow.getDate();
+        let date = dateNow.setDate(day + 30);
+        db.get('user').assign({
+            auto: date
+        }).write();
+      }
       res.status(200).json({
         status: 1,
         message: lang.OK,
@@ -35,9 +52,9 @@ router.route('/login')
     let username = req.body.username;
     let password = req.body.password;
     db.get('user').assign({
-        username: username,
-        password: password
-      }).write();
+      username: username,
+      password: password
+    }).write();
     res.status(200).json({
       status: 1,
       message: lang.OK

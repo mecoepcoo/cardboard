@@ -1,7 +1,8 @@
 {
   "user": {
     "username": "admin",
-    "password": "admin"
+    "password": "admin",
+    "auto": 1506522373977
   },
   "categories": [],
   "items": [],
