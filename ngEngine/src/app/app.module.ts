@@ -9,6 +9,8 @@ import { ROUTER_CONFIG } from './app.routes';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
+import { MainComponent } from './main/main.component';
+
 import { UserService } from './share/user.service';
 
 // ng build时，导入CookieOptions
@@ -18,7 +20,8 @@ import { CookieService, CookieOptions } from 'angular2-cookie';
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent
+    LoginComponent,
+    MainComponent,
   ],
   imports: [
     BrowserModule,
