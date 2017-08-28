@@ -20,7 +20,8 @@ export class UserService {
    * req demo: http://localhost:3308/login?username=admin&password=admin
    */
   doLogin(username: string, password: string, auto: boolean): Observable<any> {
-    const url = `${Config.apiRoot}login?username=${username}&password=${password}`;
+    let autoFlag = auto ? 1 : 0;
+    const url = `${Config.apiRoot}login?username=${username}&password=${password}&auto=${autoFlag}`;
     return this.http.get(url)
       .map(this.extraData)
       .catch(this.handleError);

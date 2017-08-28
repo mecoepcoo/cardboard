@@ -1,0 +1,38 @@
+@b_height: 50px;
+@f_size: 14px;
+
+#desktop-toolbar {
+  height: @b_height;
+  background-color: #24292e;
+  outline: 1px solid black;
+  .desktop-toolbar-selection {
+    float: left;
+    width: 250px;
+    height: 100%;
+    line-height: @b_height;
+    outline: 1px solid black;
+    color: white;
+    font-size: @f_size;
+    cursor: default;
+    &:hover {
+      background-color: #2f363d;
+    }
+    i {
+      float: left;
+      margin: 0 10px 0 15px;
+      height: 100%;
+    }
+    .tool {
+      float: left;
+      width: 150px;
+      height: 100%;
+      .title {
+        color: #959da5;
+        .detail {
+          color: white;
+          font-weight: bold;
+        }
+      }
+    }
+  }
+}

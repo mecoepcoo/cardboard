@@ -10,6 +10,7 @@ import { ROUTER_CONFIG } from './app.routes';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { MainComponent } from './main/main.component';
+import { DesktopToolbarComponent } from './desktop-toolbar/desktop-toolbar.component';
 
 import { UserService } from './share/user.service';
 
@@ -22,6 +23,7 @@ import { CookieService, CookieOptions } from 'angular2-cookie';
     AppComponent,
     LoginComponent,
     MainComponent,
+    DesktopToolbarComponent,
   ],
   imports: [
     BrowserModule,
