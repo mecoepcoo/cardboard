@@ -11,6 +11,7 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { MainComponent } from './main/main.component';
 import { DesktopToolbarComponent } from './desktop-toolbar/desktop-toolbar.component';
+import { SideMenuComponent } from './side-menu/side-menu.component';
 
 import { UserService } from './share/user.service';
 
@@ -24,6 +25,7 @@ import { CookieService, CookieOptions } from 'angular2-cookie';
     LoginComponent,
     MainComponent,
     DesktopToolbarComponent,
+    SideMenuComponent,
   ],
   imports: [
     BrowserModule,
