@@ -5,6 +5,7 @@
   flex-direction: column;
   width: @m_width;
   height: 100%;
+  font-size: 14px;
   border-right: 1px solid #eee;
   cursor: default;
   user-select: none;
@@ -25,7 +26,7 @@
         border-right: 1px solid #e8e8e8;
       }
     }
-    .menu-active:after {
+    .active:after {
       position: absolute;
       top: 27px;
       left: 0;
@@ -39,15 +40,108 @@
     display: flex;
     flex: 1;
     flex-direction: column;
-    margin-top: 10px;
+    box-shadow: 0 3px 10px 1px #eee;
     .head {
       position: relative;
       padding: 0 15px;
+      height: 30px;
+      line-height: 30px;
+      background-color: #f6f8fa;
       label {
         position: absolute;
         left: 0;
         width: 100%;
         text-align: center;
+      }
+    }
+    #category {
+      //display: none;
+      .items-list {
+        position: relative;
+        .category-item {
+          padding: 0 15px;
+          position: relative;
+          height: 30px;
+          line-height: 30px;
+          span {
+            position: absolute;
+            top: 0;
+            left: 38px;
+          }
+          &:hover {
+            background-color: #ebeef1;
+          }
+        }
+        .active {
+          color: white;
+          background-color: #0366d6;
+        }
+        .active:hover {
+          .active;
+        }
+      }
+    }
+    .category-add {
+      display: flex;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      box-sizing: border-box;
+      width: 100%;
+      height: 40px;
+      border-top: 1px solid #eee;
+      input {
+        display: flex;
+        padding: 5px;
+        box-sizing: border-box;
+        width: 75%;
+        border: none;
+        &:focus {
+          outline: none;
+        }
+      }
+      button {
+        display: flex;
+        justify-content: center;
+        width: 25%;
+      }
+    }
+    #order {
+      display: none;
+      .items-list {
+        position: relative;
+        .order-item {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          padding: 0 15px;
+          position: relative;
+          height: 60px;
+          line-height: 30px;
+          border-bottom: 1px solid #eee;
+          .item-detail {
+            display: flex;
+            flex-direction: column;
+            margin-left: 15px;
+            span {
+              line-height: 20px;
+            }
+            .order-date {
+              color: #cecece;
+              font-size: 12px;
+            }
+          }
+          &:hover {
+            background-color: #ebeef1;
+          }
+        }
+        .active {
+          color: white;
+          background-color: #0366d6;
+        }
+        .active:hover {
+          .active;
+        }
       }
     }
   }
