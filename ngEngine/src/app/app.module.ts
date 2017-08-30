@@ -12,6 +12,7 @@ import { LoginComponent } from './login/login.component';
 import { MainComponent } from './main/main.component';
 import { DesktopToolbarComponent } from './desktop-toolbar/desktop-toolbar.component';
 import { SideMenuComponent } from './side-menu/side-menu.component';
+import { CategoryDetailComponent } from './category-detail/category-detail.component';
 
 import { UserService } from './share/user.service';
 import { SelectCheckboxService } from './share/select-checkbox.service';
@@ -30,6 +31,7 @@ import { CookieService, CookieOptions } from 'angular2-cookie';
     DesktopToolbarComponent,
     SideMenuComponent,
     CheckedAllDirective,
+    CategoryDetailComponent,
   ],
   imports: [
     BrowserModule,

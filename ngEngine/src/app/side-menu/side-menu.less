@@ -9,9 +9,12 @@
   border-right: 1px solid #eee;
   cursor: default;
   user-select: none;
+  overflow-x: hidden;
+  overflow-y: auto;
   .menu-option {
     display: flex;
     flex-direction: row;
+    flex-shrink: 0;
     height: 30px;
     line-height: 30px;
     text-align: center;
@@ -40,9 +43,12 @@
     display: flex;
     flex: 1;
     flex-direction: column;
+    position: relative;
     box-shadow: 0 3px 10px 1px #eee;
+    min-height: 300px;
+
     .activeMenu {
-      display: block!important;
+      display: flex!important;
     }
     .head {
       position: relative;
@@ -59,8 +65,11 @@
     }
     #category {
       display: none;
+      flex-direction: column;
+      flex-grow: 1;
       .items-list {
         position: relative;
+        flex-grow: 1;
         .category-item {
           padding: 0 15px;
           position: relative;
@@ -86,7 +95,8 @@
     }
     .category-add {
       display: flex;
-      position: absolute;
+      //position: absolute;
+      flex-shrink: 0;
       bottom: 0;
       left: 0;
       box-sizing: border-box;
