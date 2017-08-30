@@ -1,31 +1,18 @@
 <div id="side-menu">
   <div class="menu-option">
-    <div class="menu-item active">分类</div>
-    <div class="menu-item">订单</div>
+    <div class="menu-item" [ngClass]="{'active': menuStatus.category}" (click)="menuSwitch('category')">分类</div>
+    <div class="menu-item" [ngClass]="{'active': menuStatus.order}" (click)="menuSwitch('order')">订单</div>
   </div>
   <div class="menu-container">
-    <div id="category">
+    <div id="category" [ngClass]="{'activeMenu': menuStatus.category}" appCheckedAll>
       <div class="head">
-        <input type="checkbox" id="category-check">
+        <input type="checkbox" id="category-check" class="check check-all">
         <label for="category-check">共计3个分类</label>
       </div>
       <ul class="items-list">
-        <li class="category-item active">
-          <input type="checkbox">
-          <span>KT板</span>
-        </li>
-
-        <li class="category-item">
-          <input type="checkbox">
-          <span>KT板</span>
-        </li>
-        <li class="category-item">
-          <input type="checkbox">
-          <span>KT板</span>
-        </li>
-        <li class="category-item">
-          <input type="checkbox">
-          <span>KT板</span>
+        <li class="category-item" [ngClass]="{'active': category.current}" *ngFor="let category of categoryList;let i=index" (click)="selectItem(i, categoryList)">
+          <input type="checkbox" class="check">
+          <span>{{ category.name }} ({{ category.num }})</span>
         </li>
       </ul>
       <div class="category-add">
@@ -33,37 +20,19 @@
         <button class="btn add-button">新增</button>
       </div>
     </div>
-    <div id="order">
+    <div id="order" [ngClass]="{'activeMenu': menuStatus.order}" appCheckedAll>
       <div class="head">
-        <input type="checkbox" id="order-check">
+        <input type="checkbox" id="order-check" class="check check-all">
         <label for="order-check">共计3个订单</label>
       </div>
       <ul class="items-list">
-        <li class="order-item">
-          <input type="checkbox">
+        <li class="order-item" [ngClass]="{'active': order.current}" *ngFor="let order of orderList;let i=index" (click)="selectItem(i, orderList)">
+          <input type="checkbox" class="check">
           <div class="item-detail">
-            <span class="order-title">人民医院贴字</span>
-            <span class="order-date">2017-08-29 18:20:30 (星期二)</span>
+            <span class="order-title">{{ order.name }}</span>
+            <span class="order-date">{{ order.date | date:'y-MM-dd H:mm:ss (EEE)' }}</span>
           </div>
         </li>
-
-        <li class="order-item active">
-          <input type="checkbox">
-          <div class="item-detail">
-            <span class="order-title">人民医院贴字</span>
-            <span class="order-date">2017-08-29 18:20:30 (星期二)</span>
-          </div>
-        </li>
-        <li class="order-item">
-          <input type="checkbox">
-          <div class="item-detail">
-            <span class="order-title">人民医院贴字</span>
-            <span class="order-date">2017-08-29 18:20:30 (星期二)</span>
-          </div>
-        </li>
-
-
-
       </ul>
     </div>
   </div>

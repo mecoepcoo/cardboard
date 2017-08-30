@@ -14,6 +14,9 @@ import { DesktopToolbarComponent } from './desktop-toolbar/desktop-toolbar.compo
 import { SideMenuComponent } from './side-menu/side-menu.component';
 
 import { UserService } from './share/user.service';
+import { SelectCheckboxService } from './share/select-checkbox.service';
+
+import { CheckedAllDirective } from './share/checked-all.directive';
 
 // ng build时，导入CookieOptions
 // import { CookieService } from 'angular2-cookie';
@@ -26,6 +29,7 @@ import { CookieService, CookieOptions } from 'angular2-cookie';
     MainComponent,
     DesktopToolbarComponent,
     SideMenuComponent,
+    CheckedAllDirective,
   ],
   imports: [
     BrowserModule,
@@ -41,6 +45,7 @@ import { CookieService, CookieOptions } from 'angular2-cookie';
     CookieService,
     // CookieOptions,
     UserService,
+    SelectCheckboxService,
   ],
   bootstrap: [AppComponent]
 })
