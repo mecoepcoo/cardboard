@@ -5,6 +5,7 @@
     justify-content: space-between;
     padding: 8px 38px 8px 16px;
     width: 100%;
+    min-width: 500px;
     height: 60px;
     box-sizing: border-box;
     cursor: default;
@@ -19,6 +20,10 @@
     .tools {
       display: flex;
       align-items: center;
+      .edit-lock {
+        padding: 6px 10px;
+        border-radius: 3px;
+      }
     }
   }
   #list {
@@ -40,8 +45,21 @@
     .list-head, .list-item {
       display: flex;
       flex: 1;
+      margin-right: 6px;
       box-sizing: border-box;
       word-break: break-all;
+    }
+    .list-item {
+      -webkit-user-modify: read-write-plaintext-only;
+      min-height: 40px;
+      display: flex;
+      align-items: center;
+      &:focus {
+        outline: 1px solid #0366d6;
+      }
+    }
+    .editable {
+      -webkit-user-modify: read-write-plaintext-only;
     }
     .list-heads {
       color: white;
@@ -51,14 +69,14 @@
       background-color: #f1f8ff;
     }
     .list-items:hover {
-      color: white;
-      background-color: #28a745;
+      //color: white;
+      background-color: #ccffd8;
     }
     .id {
       min-width: 90px;
     }
     .name {
-      min-width: 110px;
+      min-width: 80px;
     }
     .brand {
       min-width: 90px;
@@ -79,10 +97,25 @@
       min-width: 100px;
     }
     .remark {
-      min-width: 145px;
+      min-width: 110px;
     }
     .operate {
       min-width: 130px;
+      .btn {
+        padding: 3px 6px;
+        margin-right: 6px;
+        border-radius: 6px;
+      }
+      .add {
+        margin-left: 6px;
+        font-size: 22px;
+        border-radius: 50px;
+        background-color: white;
+        color: #0366d6;
+        &:hover {
+          color: #0372ef;
+        }
+      }
     }
   }
 }

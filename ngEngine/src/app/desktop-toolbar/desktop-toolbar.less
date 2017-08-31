@@ -9,7 +9,7 @@
   user-select: none;
   .desktop-toolbar-selection {
     display: flex;
-    width: 250px;
+    width: 150px;
     height: 100%;
     line-height: @b_height;
     outline: 1px solid black;
@@ -20,12 +20,10 @@
       background-color: #2f363d;
     }
     i {
-      float: left;
       margin: 0 10px 0 15px;
       height: 100%;
     }
     .tool {
-      float: left;
       width: 150px;
       height: 100%;
       .title {
@@ -35,6 +33,19 @@
           font-weight: bold;
         }
       }
+    }
+  }
+  .current-order {
+    width: 250px;
+  }
+  .desktop-toolbar-space {
+    flex: 1;
+  }
+  .exit {
+    justify-content: flex-end;
+    width: 172px;
+    .tool {
+      width: 100px;
     }
   }
 }
