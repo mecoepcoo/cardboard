@@ -1,4 +1,5 @@
 import { Component, ViewChild, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { UserService } from '../share/user.service';
 
@@ -19,7 +20,8 @@ export class LoginComponent implements OnInit {
   errorMessage = '';
 
   constructor(
-    private _userService: UserService
+    private _userService: UserService,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -32,6 +34,7 @@ export class LoginComponent implements OnInit {
         .subscribe(res => {
           if (res.status === 1) {
             this.errorMessage = res.message;
+            this.router.navigate(['/home/category']);
           } else {
             this.errorMessage = res.message;
           }

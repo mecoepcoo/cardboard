@@ -80,7 +80,15 @@ router.route('/login')
         message: `${lang.ERROR}, 安全口令错误`
       });
     }
+  })
+  .delete((req, res, next) => {
+    db.get('user').assign({
+      auto: 0
+    }).write();
+    res.status(200).json({
+      status: 1,
+      message: lang.OK,
+    });
   });
-
 
 module.exports = router;
