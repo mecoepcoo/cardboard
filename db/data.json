@@ -4,7 +4,12 @@
     "password": "admin",
     "auto": 1506760815036
   },
-  "categories": [],
+  "categories": [
+    {
+      "id": "15e39090c5a20de44",
+      "name": "kt"
+    }
+  ],
   "items": [],
   "orders": []
 }
