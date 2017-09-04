@@ -15,6 +15,10 @@ export class CategoryService {
     private http: Http,
   ) {  }
 
+  /**
+   * 获取分类列表
+   * @returns {Observable<any>}
+   */
   getCategoryList(): Observable<any> {
     const url = `${Config.apiRoot}category`;
     return this.http.get(url)
@@ -22,7 +26,12 @@ export class CategoryService {
       .catch(this.handleError);
   }
 
-  addCategory(categoryName): Observable<any> {
+  /**
+   * 新增分类
+   * @param categoryName 分类名称
+   * @returns {Observable<any>}
+   */
+  addCategory(categoryName: string): Observable<any> {
     const url = `${Config.apiRoot}category`;
     const body = JSON.stringify({
       name: categoryName
