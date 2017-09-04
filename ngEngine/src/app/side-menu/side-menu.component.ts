@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
+import { ToolsService } from '../share/tools.service';
+import { CategoryService } from '../share/category.service';
+
 @Component({
   selector: 'app-side-menu',
   templateUrl: './side-menu.component.html',
@@ -53,7 +56,11 @@ export class SideMenuComponent implements OnInit {
     },
   ];
 
+  addCategoryName: string;
+
   constructor(
+    private _categoryService: CategoryService,
+    private _toolsService: ToolsService
   ) { }
 
   ngOnInit() {
@@ -83,4 +90,13 @@ export class SideMenuComponent implements OnInit {
       }
     }
   }
+
+  addCategory(name) {
+    const cname = this._toolsService.trim(name);
+    return this._categoryService.addCategory(cname)
+      .subscribe(data => {
+        console.log(data);
+      });
+  }
+
 }

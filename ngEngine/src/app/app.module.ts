@@ -14,8 +14,10 @@ import { DesktopToolbarComponent } from './desktop-toolbar/desktop-toolbar.compo
 import { SideMenuComponent } from './side-menu/side-menu.component';
 import { CategoryDetailComponent } from './category-detail/category-detail.component';
 
+import { ToolsService } from './share/tools.service';
 import { UserService } from './share/user.service';
 import { SelectCheckboxService } from './share/select-checkbox.service';
+import { CategoryService } from './share/category.service';
 
 import { CheckedAllDirective } from './share/checked-all.directive';
 
@@ -48,6 +50,8 @@ import { CookieService, CookieOptions } from 'angular2-cookie';
     // CookieOptions,
     UserService,
     SelectCheckboxService,
+    CategoryService,
+    ToolsService,
   ],
   bootstrap: [AppComponent]
 })

@@ -16,8 +16,8 @@
         </li>
       </ul>
       <div class="category-add">
-        <input type="text" placeholder="输入分类名称" spellcheck="false" autocomplete="off">
-        <button class="btn add-button">新增</button>
+        <input type="text" placeholder="输入分类名称" spellcheck="false" autocomplete="off" [(ngModel)]="addCategoryName">
+        <button class="btn add-button" (click)="addCategory(addCategoryName)">新增</button>
       </div>
     </div>
     <div id="order" [ngClass]="{'activeMenu': menuStatus.order}" appCheckedAll>

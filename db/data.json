@@ -2,12 +2,20 @@
   "user": {
     "username": "admin",
     "password": "admin",
-    "auto": 1506760815036
+    "auto": 1507102497721
   },
   "categories": [
     {
       "id": "15e39090c5a20de44",
       "name": "kt"
+    },
+    {
+      "id": "15e4ae807093f9995",
+      "name": "6435"
+    },
+    {
+      "id": "15e4b6489e43f9995",
+      "name": "天热否认444"
     }
   ],
   "items": [],

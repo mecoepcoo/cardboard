@@ -25,7 +25,7 @@ export class LoginComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-
+    this.autoLogin();
   }
 
   doLogin() {
@@ -44,5 +44,12 @@ export class LoginComponent implements OnInit {
     }
   }
 
-
+  autoLogin() {
+    return this._userService.doLogin(' ', ' ', false)
+      .subscribe(res => {
+        if (res.status === 1) {
+          this.router.navigate(['/home/category']);
+        }
+      });
+  }
 }

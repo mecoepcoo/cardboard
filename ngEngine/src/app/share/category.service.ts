@@ -1,69 +1,46 @@
+/**
+ * 分类相关服务
+ * Created by Tianzhen on 2017/9/4.
+ */
 import { Injectable } from '@angular/core';
 import { Http, Headers, RequestOptions } from '@angular/http';
 import { Observable } from 'rxjs/Rx';
 
-import { Config } from '../share/config';
+import { Config } from './config';
 
 @Injectable()
-export class UserService {
+export class CategoryService {
 
   constructor(
     private http: Http,
   ) {  }
 
-  /**
-   * 登录操作
-   * @param username 用户名
-   * @param password 密码（明文）
-   * @param auto 自动登录
-   * @returns {Observable<R|T>}
-   * req demo: http://localhost:3308/login?username=admin&password=admin
-   */
-  doLogin(username: string, password: string, auto: boolean): Observable<any> {
-    const autoFlag = auto ? 1 : 0;
-    const url = `${Config.apiRoot}login?username=${username}&password=${password}&auto=${autoFlag}`;
+  getCategoryList(): Observable<any> {
+    const url = `${Config.apiRoot}category`;
     return this.http.get(url)
       .map(this.extraData)
       .catch(this.handleError);
   }
 
-  /**
-   * 修改用户名及密码
-   * @param {object} userInfo 用户名及密码键值对
-   * @returns {Observable<R|T>}
-   * req demo: http://localhost:3308/login
-   * body: {
-   *   username: admin,
-   *   password: admin
-   * }
-   */
-  setUser(userInfo): Observable<any> {
+  addCategory(categoryName): Observable<any> {
+    const url = `${Config.apiRoot}category`;
+    const body = JSON.stringify({
+      name: categoryName
+    });
+    const headers = new Headers({'Content-Type': 'application/json'});
+    const options = new RequestOptions({headers: headers});
+    return this.http.post(url, body, options)
+      .map(this.extraData)
+      .catch(this.handleError);
+  }
+
+/*  setUser(userInfo): Observable<any> {
     const url = `${Config.apiRoot}login`;
     const body = JSON.stringify(userInfo);
     const headers = new Headers({'Content-Type': 'application/json'});
     const options = new RequestOptions({headers: headers});
 
     return this.http.post(url, body, options)
-      .map(this.extraData)
-      .catch(this.handleError);
-  }
-
-  /**
-   * 重置用户名密码为 admin, admin
-   * @param {object} secretKey 安全口令
-   * @returns {Observable<R|T>}
-   * req demo: http://localhost:3308/login
-   * body: {
-   *   key: secretKey
-   * }
-   */
-  resetUser(secretKey): Observable<any> {
-    const url = `${Config.apiRoot}login`;
-    const body = JSON.stringify(secretKey);
-    const headers = new Headers({'Content-Type': 'application/json'});
-    const options = new RequestOptions({headers: headers});
-
-    return this.http.put(url, body, options)
       .map(this.extraData)
       .catch(this.handleError);
   }
@@ -78,7 +55,7 @@ export class UserService {
     return this.http.delete(url, options)
       .map(this.extraData)
       .catch(this.handleError);
-  }
+  }*/
 
   private extraData(res) {
     const body = res.json();
