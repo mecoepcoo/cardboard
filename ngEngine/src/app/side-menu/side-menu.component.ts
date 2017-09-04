@@ -14,26 +14,7 @@ export class SideMenuComponent implements OnInit {
     order: false
   };
 
-  categoryList: any[] = [
-    {
-      id: '1',
-      name: 'KT板',
-      num: 10,
-      current: true
-    },
-    {
-      id: '2',
-      name: 'hello',
-      num: 5,
-      current: false
-    },
-    {
-      id: '2',
-      name: 'hello',
-      num: 5,
-      current: false
-    }
-  ];
+  categoryList: any[] = [];
 
   orderList: any[] = [
     {
@@ -64,7 +45,7 @@ export class SideMenuComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-
+    this.getCategoryList();
   }
 
   menuSwitch(menu) {
@@ -95,7 +76,21 @@ export class SideMenuComponent implements OnInit {
     const cname = this._toolsService.trim(name);
     return this._categoryService.addCategory(cname)
       .subscribe(data => {
-        console.log(data);
+        this.getCategoryList();
+        console.log(data.message);
+      });
+  }
+
+  getCategoryList() {
+    return this._categoryService.getCategoryList()
+      .subscribe(datas => {
+        datas.data.forEach((data, index) => {
+          this.categoryList[index] = {};
+          this.categoryList[index].id = data.id;
+          this.categoryList[index].name = data.name;
+          this.categoryList[index].current = false;
+        });
+        this.categoryList[0].current = true;
       });
   }
 
