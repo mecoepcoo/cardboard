@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { ToolsService } from '../share/tools.service';
 import { CategoryService } from '../share/category.service';
@@ -41,11 +42,15 @@ export class SideMenuComponent implements OnInit {
 
   constructor(
     private _categoryService: CategoryService,
-    private _toolsService: ToolsService
+    private _toolsService: ToolsService,
+    private router: Router
   ) { }
 
   ngOnInit() {
-    this.getCategoryList();
+    this.getCategoryList()
+      .subscribe(() => {
+        this.selectItem(0, this.categoryList, this.categoryList[0].id);
+      });
   }
 
   menuSwitch(menu) {
@@ -60,7 +65,7 @@ export class SideMenuComponent implements OnInit {
     }
   }
 
-  selectItem(index, list) {
+  selectItem(index: number, list: any[], id: string) {
     if (!list[index].current) {
       for (const item of list) {
         if (item === list[index]) {
@@ -70,28 +75,35 @@ export class SideMenuComponent implements OnInit {
         }
       }
     }
+    this.router.navigate(['/home/category', id]);
   }
 
   addCategory(name) {
     const cname = this._toolsService.trim(name);
     return this._categoryService.addCategory(cname)
       .subscribe(data => {
-        this.getCategoryList();
+        this.getCategoryList()
+          .subscribe(() => {
+            this.selectItem(this.categoryList.length - 1, this.categoryList, this.categoryList[this.categoryList.length - 1].id);
+          });
         console.log(data.message);
       });
   }
 
   getCategoryList() {
     return this._categoryService.getCategoryList()
-      .subscribe(datas => {
+      .map(datas => {
         datas.data.forEach((data, index) => {
           this.categoryList[index] = {};
           this.categoryList[index].id = data.id;
           this.categoryList[index].name = data.name;
           this.categoryList[index].current = false;
         });
-        this.categoryList[0].current = true;
       });
   }
+
+/*  turnCategory(id: string) {
+    this.router.navigate(['/home/category', id]);
+  }*/
 
 }

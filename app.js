@@ -35,6 +35,7 @@ app.use('/users', users);
 
 app.use('/api', require('./api/user'));
 app.use('/api', require('./api/category'));
+app.use('/api', require('./api/item'));
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

@@ -10,7 +10,7 @@
         <label for="category-check">共计3个分类</label>
       </div>
       <ul class="items-list">
-        <li class="category-item" [ngClass]="{'active': category.current}" *ngFor="let category of categoryList;let i=index" (click)="selectItem(i, categoryList)">
+        <li class="category-item" [ngClass]="{'active': category.current}" *ngFor="let category of categoryList;let i=index" (click)="selectItem(i, categoryList, category.id)">
           <input type="checkbox" class="check">
           <span>{{ category.name }}</span>
         </li>

@@ -22,6 +22,10 @@ export const ROUTER_CONFIG: Routes = [
       {
         path: 'category',
         component: CategoryDetailComponent
+      },
+      {
+        path: 'category/:id',
+        component: CategoryDetailComponent
       }
     ]
   }
