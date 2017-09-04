@@ -12,7 +12,7 @@
       <ul class="items-list">
         <li class="category-item" [ngClass]="{'active': category.current}" *ngFor="let category of categoryList;let i=index" (click)="selectItem(i, categoryList)">
           <input type="checkbox" class="check">
-          <span>{{ category.name }} ({{ category.num }})</span>
+          <span>{{ category.name }}</span>
         </li>
       </ul>
       <div class="category-add">
