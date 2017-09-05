@@ -7,18 +7,7 @@ import { Http, Headers, RequestOptions } from '@angular/http';
 import { Observable } from 'rxjs/Rx';
 
 import { Config } from './config';
-
-class Item {
-  id?: string;
-  name: string;
-  brand: string;
-  model: string;
-  standard: string;
-  color: string;
-  price: string;
-  date?: number;
-  remark: string;
-}
+import { Item } from '../modal/item';
 
 @Injectable()
 export class ItemService {
@@ -40,10 +29,11 @@ export class ItemService {
 
 
   addItem(categoryId: string, item: Item): Observable<any> {
-    console.log(item);
+    const data = item;
+    data.cid = categoryId;
     const url = `${Config.apiRoot}items`;
     const body = JSON.stringify({
-      item: item
+      item: data
     });
     const headers = new Headers({'Content-Type': 'application/json'});
     const options = new RequestOptions({headers: headers});

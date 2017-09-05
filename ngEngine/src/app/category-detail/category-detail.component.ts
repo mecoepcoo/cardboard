@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 
 import { ItemService } from '../share/item.service';
+import { Item } from '../modal/item';
 
 @Component({
   selector: 'app-category-detail',
@@ -23,7 +24,7 @@ export class CategoryDetailComponent implements OnInit {
     text: '解锁编辑'
   };
 
-  itemList = [];
+  itemList: Item[] = [];
 
   newItem = {
     name: '',
@@ -43,6 +44,9 @@ export class CategoryDetailComponent implements OnInit {
 
   ngOnInit() {
     this.getItems();
+    setTimeout(() => {
+      console.log(this.itemList);
+    }, 10000);
   }
 
   setEditFlag() {
@@ -60,13 +64,16 @@ export class CategoryDetailComponent implements OnInit {
         this.category.id = param.id;
         this._itemService.getItemList(this.category.id)
           .subscribe(datas => {
-            console.log(datas);
+            this.itemList = datas.data;
           });
       });
   }
 
   addItem() {
     this._itemService.addItem(this.category.id, this.newItem)
-      .subscribe();
+      .subscribe((datas) => {
+        console.log(datas);
+        this.getItems();
+      });
   }
 }

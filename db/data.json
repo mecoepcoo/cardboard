@@ -7,7 +7,8 @@
   "categories": [
     {
       "id": "15e39090c5a20de44",
-      "name": "kt"
+      "name": "kt",
+      "unit": "个"
     },
     {
       "id": "15e50fd797501514e",
@@ -17,9 +18,52 @@
   ],
   "items": [
     {
-      "id": "6666",
-      "name": "hey",
-      "cid": "15e39090c5a20de44"
+      "name": "测试",
+      "brand": "1牌",
+      "model": "bbb",
+      "standard": "60",
+      "color": "蓝色",
+      "price": "10",
+      "date": 1504619622508,
+      "remark": "没有",
+      "cid": "15e39090c5a20de44",
+      "id": "15e5251d657af67a5"
+    },
+    {
+      "name": "kt板",
+      "brand": "小红牌",
+      "model": "bbb",
+      "standard": "60",
+      "color": "蓝色",
+      "price": "10",
+      "date": 1504619744491,
+      "remark": "没有了",
+      "cid": "15e50fd797501514e",
+      "id": "15e5253bab4c0b578"
+    },
+    {
+      "name": "kt板2",
+      "brand": "小强牌",
+      "model": "ccc",
+      "standard": "60",
+      "color": "蓝色",
+      "price": "10",
+      "date": 1504619744491,
+      "remark": "没有了",
+      "cid": "15e50fd797501514e",
+      "id": "15e5253e1ec63318a"
+    },
+    {
+      "name": "玻璃",
+      "brand": "小李牌",
+      "model": "ttt",
+      "standard": "60",
+      "color": "蓝色",
+      "price": "30",
+      "date": 1504619744491,
+      "remark": "还有",
+      "cid": "15e39090c5a20de44",
+      "id": "15e52542ae241c76a"
     }
   ],
   "orders": []

@@ -20,12 +20,10 @@ router.route('/items')
     });
   })
   .post((req, res, next) => {
-    console.log(req.body);
+    let data = req.body.item;
     const id = randNumLib.idBuild();
-/*    db.get('items').push({
-      id: 5,
-      name: 1
-    }).write();*/
+    data.id = id;
+    db.get('items').push(data).write();
     res.status(200).json({
       status: 1,
       message: lang.OK,

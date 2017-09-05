@@ -101,9 +101,4 @@ export class SideMenuComponent implements OnInit {
         });
       });
   }
-
-/*  turnCategory(id: string) {
-    this.router.navigate(['/home/category', id]);
-  }*/
-
 }

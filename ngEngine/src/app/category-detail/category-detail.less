@@ -66,7 +66,9 @@
       display: flex;
       align-items: center;
       &:focus {
-        outline: 1px solid #0366d6;
+        outline: -webkit-focus-ring-color auto 5px;
+        outline-offset: 2px;
+        background-color: white;
       }
     }
     .editable {
@@ -84,7 +86,7 @@
       background-color: #ccffd8;
     }
     .id {
-      min-width: 90px;
+      min-width: 160px;
     }
     .name {
       min-width: 80px;
