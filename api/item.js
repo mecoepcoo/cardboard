@@ -19,17 +19,17 @@ router.route('/items')
       data: data
     });
   })
-/*  .post((req, res, next) => {
-    const name = req.body.name;
+  .post((req, res, next) => {
+    console.log(req.body);
     const id = randNumLib.idBuild();
-    db.get('categories').push({
-      id: id,
-      name: name
-    }).write();
+/*    db.get('items').push({
+      id: 5,
+      name: 1
+    }).write();*/
     res.status(200).json({
       status: 1,
       message: lang.OK,
     });
-  });*/
+  });
 
 module.exports = router;

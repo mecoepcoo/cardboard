@@ -18,6 +18,7 @@ import { ToolsService } from './share/tools.service';
 import { UserService } from './share/user.service';
 import { SelectCheckboxService } from './share/select-checkbox.service';
 import { CategoryService } from './share/category.service';
+import { ItemService } from './share/item.service';
 
 import { CheckedAllDirective } from './share/checked-all.directive';
 
@@ -52,6 +53,7 @@ import { CookieService, CookieOptions } from 'angular2-cookie';
     SelectCheckboxService,
     CategoryService,
     ToolsService,
+    ItemService,
   ],
   bootstrap: [AppComponent]
 })

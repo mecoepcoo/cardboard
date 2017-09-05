@@ -22,7 +22,8 @@ router.route('/category')
     const id = randNumLib.idBuild();
     db.get('categories').push({
       id: id,
-      name: name
+      name: name,
+      unit: '个'
     }).write();
     res.status(200).json({
       status: 1,

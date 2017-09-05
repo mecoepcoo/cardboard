@@ -16,6 +16,15 @@
       h3 {
         margin-right: 50px;
       }
+      p {
+        span {
+          display: inline-block;
+          min-width: 42px;
+          font-size: 18px;
+          font-weight: bold;
+          text-align: center;
+        }
+      }
     }
     .tools {
       display: flex;
@@ -24,6 +33,9 @@
         padding: 6px 10px;
         border-radius: 3px;
       }
+    }
+    .editable {
+      -webkit-user-modify: read-write-plaintext-only;
     }
   }
   #list {
@@ -50,7 +62,6 @@
       word-break: break-all;
     }
     .list-item {
-      -webkit-user-modify: read-write-plaintext-only;
       min-height: 40px;
       display: flex;
       align-items: center;
@@ -117,5 +128,6 @@
         }
       }
     }
+
   }
 }
