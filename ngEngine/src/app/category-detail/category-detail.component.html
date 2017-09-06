@@ -22,18 +22,32 @@
         <div class="list-head remark">备注</div>
         <div class="list-head operate">操作</div>
       </li>
+      <li class="list-items add-item">
+        <div class="list-item id">点击项目以新增内容：</div>
+        <div class="list-item name editable" spellcheck="false" (blur)="newItem.name = $event.target.innerText;"></div>
+        <div class="list-item brand editable" spellcheck="false" (blur)="newItem.brand = $event.target.innerText;"></div>
+        <div class="list-item model editable" spellcheck="false" (blur)="newItem.model = $event.target.innerText;"></div>
+        <div class="list-item standard editable" spellcheck="false" (blur)="newItem.standard = $event.target.innerText;"></div>
+        <div class="list-item color editable" spellcheck="false" (blur)="newItem.color = $event.target.innerText;"></div>
+        <div class="list-item price editable" spellcheck="false" (blur)="newItem.price = $event.target.innerText;"></div>
+        <div class="list-item date" spellcheck="false">{{ newItem.date | date:'y/MM/dd' }}</div>
+        <div class="list-item remark editable" spellcheck="false" (input)="newItem.remark = $event.target.innerText;"></div>
+        <div class="list-item operate">
+          <button class="btn btn-red btn-save" (click)="addItem()">新增</button>
+        </div>
+      </li>
       <li class="list-items" *ngFor="let item of itemList;let i=index">
         <div class="list-item id">{{ item.id }}</div>
-        <div class="list-item name" spellcheck="false" [ngClass]="{'editable': editFlag.status}" (blur)="item.name = $event.target.innerText;">{{ item.name }}</div>
-        <div class="list-item brand" spellcheck="false" [ngClass]="{'editable': editFlag.status}">小明牌</div>
-        <div class="list-item model" spellcheck="false" [ngClass]="{'editable': editFlag.status}">AAA</div>
-        <div class="list-item standard" spellcheck="false" [ngClass]="{'editable': editFlag.status}">80cm</div>
-        <div class="list-item color" spellcheck="false" [ngClass]="{'editable': editFlag.status}">红色</div>
-        <div class="list-item price" spellcheck="false" [ngClass]="{'editable': editFlag.status}">50</div>
-        <div class="list-item date" spellcheck="false" [ngClass]="{'editable': editFlag.status}">2017/08/09</div>
-        <div class="list-item remark" spellcheck="false" [ngClass]="{'editable': editFlag.status}">缺货</div>
+        <div class="list-item name" spellcheck="false" [ngClass]="{'editable': editFlag.status}" (blur)="item.name = $event.target.innerText;" (input)="item.changed = true;">{{ item.name }}</div>
+        <div class="list-item brand" spellcheck="false" [ngClass]="{'editable': editFlag.status}" (blur)="item.brand = $event.target.innerText;" (input)="item.changed = true;">{{ item.brand }}</div>
+        <div class="list-item model" spellcheck="false" [ngClass]="{'editable': editFlag.status}" (blur)="item.model = $event.target.innerText;" (input)="item.changed = true;">{{ item.model }}</div>
+        <div class="list-item standard" spellcheck="false" [ngClass]="{'editable': editFlag.status}" (blur)="item.standard = $event.target.innerText;" (input)="item.changed = true;">{{ item.standard }}</div>
+        <div class="list-item color" spellcheck="false" [ngClass]="{'editable': editFlag.status}" (blur)="item.color = $event.target.innerText;" (input)="item.changed = true;">{{ item.color }}</div>
+        <div class="list-item price" spellcheck="false" [ngClass]="{'editable': editFlag.status}" (blur)="item.price = $event.target.innerText;" (input)="item.changed = true;">{{ item.price }}</div>
+        <div class="list-item date" spellcheck="false">{{ item.date | date:'y/MM/dd' }}</div>
+        <div class="list-item remark" spellcheck="false" [ngClass]="{'editable': editFlag.status}" (blur)="item.remark = $event.target.innerText;" (input)="item.changed = true;">{{ item.remark }}</div>
         <div class="list-item operate">
-          <button class="btn btn-save disable">保存</button>
+          <button class="btn btn-save" [ngClass]="{'disable': !item.changed}" (click)="saveItem(item)">保存</button>
           <button class="btn btn-red btn-delete" title="双击按钮删除">删除</button>
           <i class="iconfont add">&#xe61e;</i>
         </div>
@@ -54,20 +68,6 @@
           <i class="iconfont add">&#xe61e;</i>
         </div>
       </li>-->
-      <li class="list-items add-item">
-        <div class="list-item id">点击项目以新增内容</div>
-        <div class="list-item name editable" spellcheck="false" (input)="newItem.name = $event.target.innerText"></div>
-        <div class="list-item brand editable" spellcheck="false" (input)="newItem.brand = $event.target.innerText"></div>
-        <div class="list-item model editable" spellcheck="false" (input)="newItem.model = $event.target.innerText"></div>
-        <div class="list-item standard editable" spellcheck="false" (input)="newItem.standard = $event.target.innerText"></div>
-        <div class="list-item color editable" spellcheck="false" (input)="newItem.color = $event.target.innerText"></div>
-        <div class="list-item price editable" spellcheck="false" (input)="newItem.price = $event.target.innerText"></div>
-        <div class="list-item date" spellcheck="false">{{ newItem.date | date:'y/MM/dd' }}</div>
-        <div class="list-item remark editable" spellcheck="false" (input)="newItem.remark = $event.target.innerText"></div>
-        <div class="list-item operate">
-          <button class="btn btn-red btn-save" (click)="addItem()">新增</button>
-        </div>
-      </li>
     </ul>
   </div>
 </div>

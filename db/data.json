@@ -60,10 +60,11 @@
       "standard": "60",
       "color": "蓝色",
       "price": "30",
-      "date": 1504619744491,
+      "date": 1504712271538,
       "remark": "还有",
       "cid": "15e39090c5a20de44",
-      "id": "15e52542ae241c76a"
+      "id": "15e52542ae241c76a",
+      "changed": true
     }
   ],
   "orders": []

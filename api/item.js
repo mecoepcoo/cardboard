@@ -11,7 +11,6 @@ const randNumLib = require('../lib/rand-num.fn');
 router.route('/items')
   .get((req, res, next) => {
     const cid = req.query.cid;
-    console.log(cid);
     const data = db.get('items').filter({cid: cid}).value();
     res.status(200).json({
       status: 1,
@@ -28,6 +27,15 @@ router.route('/items')
       status: 1,
       message: lang.OK,
     });
-  });
+  })
+  .put((req, res, next) => {
+    const id = req.body.id;
+    const item = req.body;
+    db.get('items').find({id: id}).assign(item).write();
+    res.status(200).json({
+      status: 1,
+      message: lang.OK,
+    });
+  })
 
 module.exports = router;

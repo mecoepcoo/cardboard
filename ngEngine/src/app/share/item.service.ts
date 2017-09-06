@@ -27,7 +27,12 @@ export class ItemService {
       .catch(this.handleError);
   }
 
-
+  /**
+   * 添加项目
+   * @param {string} categoryId 目录id
+   * @param {Item} item 项目信息
+   * @returns {Observable<any>}
+   */
   addItem(categoryId: string, item: Item): Observable<any> {
     const data = item;
     data.cid = categoryId;
@@ -42,18 +47,18 @@ export class ItemService {
       .catch(this.handleError);
   }
 
-/*  setUser(userInfo): Observable<any> {
-    const url = `${Config.apiRoot}login`;
-    const body = JSON.stringify(userInfo);
+  saveItem(item): Observable<any> {
+    const url = `${Config.apiRoot}items`;
+    const body = JSON.stringify(item);
     const headers = new Headers({'Content-Type': 'application/json'});
     const options = new RequestOptions({headers: headers});
 
-    return this.http.post(url, body, options)
+    return this.http.put(url, body, options)
       .map(this.extraData)
       .catch(this.handleError);
   }
 
-  doLogout(): Observable<any> {
+/*  doLogout(): Observable<any> {
     const url = `${Config.apiRoot}login`;
     const headers = new Headers({'Content-Type': 'application/json'});
     const options = new RequestOptions({

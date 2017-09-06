@@ -64,16 +64,36 @@ export class CategoryDetailComponent implements OnInit {
         this.category.id = param.id;
         this._itemService.getItemList(this.category.id)
           .subscribe(datas => {
+            datas.data.forEach((data, index) => {
+              data.changed = false;
+            });
             this.itemList = datas.data;
           });
       });
   }
 
   addItem() {
-    this._itemService.addItem(this.category.id, this.newItem)
-      .subscribe((datas) => {
-        console.log(datas);
-        this.getItems();
-      });
+    const newItem = this.newItem;
+    if (newItem.name && newItem.price) {
+      this._itemService.addItem(this.category.id, newItem)
+        .subscribe((datas) => {
+          console.log(datas);
+          this.getItems();
+        });
+    } else {
+      console.log('error');
+    }
+  }
+
+  saveItem(item) {
+    console.log(item);
+    if (item.changed) {
+      item.date = new Date().getTime();
+      this._itemService.saveItem(item)
+        .subscribe((datas) => {
+          console.log(datas);
+          this.getItems();
+        });
+    }
   }
 }
