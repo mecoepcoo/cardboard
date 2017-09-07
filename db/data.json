@@ -8,12 +8,12 @@
     {
       "id": "15e39090c5a20de44",
       "name": "kt",
-      "unit": "个"
+      "unit": "y"
     },
     {
       "id": "15e50fd797501514e",
       "name": "4324",
-      "unit": "个"
+      "unit": "单位"
     }
   ],
   "items": [
@@ -42,25 +42,26 @@
       "id": "15e5253bab4c0b578"
     },
     {
-      "name": "kt板2",
+      "name": "kt板3",
       "brand": "小强牌",
       "model": "ccc",
       "standard": "60",
       "color": "蓝色",
       "price": "10",
-      "date": 1504619744491,
+      "date": 1504752529409,
       "remark": "没有了",
       "cid": "15e50fd797501514e",
-      "id": "15e5253e1ec63318a"
+      "id": "15e5253e1ec63318a",
+      "changed": true
     },
     {
-      "name": "玻璃",
+      "name": "玻璃2",
       "brand": "小李牌",
       "model": "ttt",
       "standard": "60",
       "color": "蓝色",
       "price": "30",
-      "date": 1504712271538,
+      "date": 1504752519238,
       "remark": "还有",
       "cid": "15e39090c5a20de44",
       "id": "15e52542ae241c76a",

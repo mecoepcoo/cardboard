@@ -3,6 +3,7 @@ import { Router, ActivatedRoute, Params } from '@angular/router';
 
 import { ItemService } from '../share/item.service';
 import { Item } from '../modal/item';
+import { CategoryService } from '../share/category.service';
 
 @Component({
   selector: 'app-category-detail',
@@ -37,16 +38,13 @@ export class CategoryDetailComponent implements OnInit {
     remark: ''
   };
 
-  constructor(
-    private activatedRoute: ActivatedRoute,
-    private _itemService: ItemService
-  ) { }
+  constructor(private activatedRoute: ActivatedRoute,
+              private _itemService: ItemService,
+              private _categoryService: CategoryService) {
+  }
 
   ngOnInit() {
     this.getItems();
-    setTimeout(() => {
-      console.log(this.itemList);
-    }, 10000);
   }
 
   setEditFlag() {
@@ -68,6 +66,10 @@ export class CategoryDetailComponent implements OnInit {
               data.changed = false;
             });
             this.itemList = datas.data;
+          });
+        this._categoryService.getCategory(this.category.id)
+          .subscribe(datas => {
+            this.category = datas.data;
           });
       });
   }
@@ -95,5 +97,22 @@ export class CategoryDetailComponent implements OnInit {
           this.getItems();
         });
     }
+  }
+
+  saveUnit($event) {
+    console.log($event.target.innerText)
+    if (!$event.target.innerText) {
+      this.category.unit = '个';
+    }
+    this._categoryService.saveCategory({
+      id: this.category.id,
+      unit: $event.target.innerText
+    })
+      .subscribe(() => {
+        this._categoryService.getCategory(this.category.id)
+          .subscribe(datas => {
+            this.category = datas.data;
+          });
+      });
   }
 }

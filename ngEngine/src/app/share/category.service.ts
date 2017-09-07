@@ -27,6 +27,18 @@ export class CategoryService {
   }
 
   /**
+   * 通过id获取分类信息
+   * @param id
+   * @returns {Observable<any>}
+   */
+  getCategory(id): Observable<any> {
+    const url = `${Config.apiRoot}category/${id}`;
+    return this.http.get(url)
+      .map(this.extraData)
+      .catch(this.handleError);
+  }
+
+  /**
    * 新增分类
    * @param categoryName 分类名称
    * @returns {Observable<any>}
@@ -43,18 +55,18 @@ export class CategoryService {
       .catch(this.handleError);
   }
 
-/*  setUser(userInfo): Observable<any> {
-    const url = `${Config.apiRoot}login`;
-    const body = JSON.stringify(userInfo);
+  saveCategory(category): Observable<any> {
+    const url = `${Config.apiRoot}category`;
+    const body = JSON.stringify(category);
     const headers = new Headers({'Content-Type': 'application/json'});
     const options = new RequestOptions({headers: headers});
 
-    return this.http.post(url, body, options)
+    return this.http.put(url, body, options)
       .map(this.extraData)
       .catch(this.handleError);
   }
 
-  doLogout(): Observable<any> {
+/*  doLogout(): Observable<any> {
     const url = `${Config.apiRoot}login`;
     const headers = new Headers({'Content-Type': 'application/json'});
     const options = new RequestOptions({

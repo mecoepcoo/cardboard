@@ -2,7 +2,7 @@
   <div class="header">
     <div class="title">
       <h3>分类：KT板</h3>
-      <p>计数单位：<span [ngClass]="{'editable': editFlag.status}" spellcheck="false">个</span></p>
+      <p>计数单位：<span [ngClass]="{'editable': editFlag.status}" spellcheck="false" (blur)="saveUnit($event)">{{ category.unit }}</span></p>
     </div>
     <div class="tools">
       <button class="btn edit-lock" [ngClass]="{'btn-red': editFlag.status}" (click)="setEditFlag()">{{ editFlag.text }}</button>
@@ -52,22 +52,6 @@
           <i class="iconfont add">&#xe61e;</i>
         </div>
       </li>
-      <!--<li class="list-items">
-        <div class="list-item id">1504103946000</div>
-        <div class="list-item name" spellcheck="false" [ngClass]="{'editable': editFlag.status}">kt</div>
-        <div class="list-item brand" spellcheck="false" [ngClass]="{'editable': editFlag.status}">小明牌</div>
-        <div class="list-item model" spellcheck="false" [ngClass]="{'editable': editFlag.status}">AAA</div>
-        <div class="list-item standard" spellcheck="false" [ngClass]="{'editable': editFlag.status}">80cm</div>
-        <div class="list-item color" spellcheck="false" [ngClass]="{'editable': editFlag.status}">红色</div>
-        <div class="list-item price" spellcheck="false" [ngClass]="{'editable': editFlag.status}">50</div>
-        <div class="list-item date" spellcheck="false" [ngClass]="{'editable': editFlag.status}">2017/08/09</div>
-        <div class="list-item remark" spellcheck="false" [ngClass]="{'editable': editFlag.status}">缺货</div>
-        <div class="list-item operate">
-          <button class="btn btn-save disable">保存</button>
-          <button class="btn btn-red btn-delete" title="双击按钮删除">删除</button>
-          <i class="iconfont add">&#xe61e;</i>
-        </div>
-      </li>-->
     </ul>
   </div>
 </div>

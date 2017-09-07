@@ -29,6 +29,28 @@ router.route('/category')
       status: 1,
       message: lang.OK,
     });
+  })
+  .put((req, res, next) => {
+    const categoryInfo = req.body;
+    db.get('categories')
+      .find({id: categoryInfo.id})
+      .assign({unit: categoryInfo.unit})
+      .write();
+    res.status(200).json({
+      status: 1,
+      message: lang.OK,
+    });
+  });
+
+router.route('/category/:id')
+  .get((req, res, next) => {
+    const id = req.params.id;
+    const data = db.get('categories').find({id: id}).value();
+    res.status(200).json({
+      status: 1,
+      message: lang.OK,
+      data: data
+    });
   });
 
 module.exports = router;
