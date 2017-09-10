@@ -1,7 +1,7 @@
 <div id="category-detail" class="main-detail category-detail">
   <div class="header">
     <div class="title">
-      <h3>分类：KT板</h3>
+      <h3>分类：{{ category.name }}</h3>
       <p>计数单位：<span [ngClass]="{'editable': editFlag.status}" spellcheck="false" (blur)="saveUnit($event)">{{ category.unit }}</span></p>
     </div>
     <div class="tools">
@@ -49,7 +49,7 @@
         <div class="list-item operate">
           <button class="btn btn-save" [ngClass]="{'disable': !item.changed}" (click)="saveItem(item)">保存</button>
           <button class="btn btn-red btn-delete" title="双击按钮删除">删除</button>
-          <i class="iconfont add">&#xe61e;</i>
+          <i class="iconfont add" title="加入当前订单">&#xe61e;</i>
         </div>
       </li>
     </ul>

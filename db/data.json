@@ -8,26 +8,27 @@
     {
       "id": "15e39090c5a20de44",
       "name": "kt",
-      "unit": "y"
+      "unit": "只"
     },
     {
       "id": "15e50fd797501514e",
       "name": "4324",
-      "unit": "单位"
+      "unit": "牛"
     }
   ],
   "items": [
     {
       "name": "测试",
-      "brand": "1牌",
+      "brand": "雕牌",
       "model": "bbb",
       "standard": "60",
       "color": "蓝色",
-      "price": "10",
-      "date": 1504619622508,
+      "price": "100",
+      "date": 1505052611369,
       "remark": "没有",
       "cid": "15e39090c5a20de44",
-      "id": "15e5251d657af67a5"
+      "id": "15e5251d657af67a5",
+      "changed": true
     },
     {
       "name": "kt板",
@@ -66,6 +67,30 @@
       "cid": "15e39090c5a20de44",
       "id": "15e52542ae241c76a",
       "changed": true
+    },
+    {
+      "name": "加入",
+      "brand": "六神",
+      "model": "1",
+      "standard": "16cm",
+      "color": "蓝",
+      "price": "15",
+      "date": 1505024895052,
+      "remark": "库存",
+      "cid": "15e39090c5a20de44",
+      "id": "15e6a79caebcbf9d7"
+    },
+    {
+      "name": "测试3",
+      "brand": "",
+      "model": "",
+      "standard": "",
+      "color": "",
+      "price": "3",
+      "date": 1505031580486,
+      "remark": "",
+      "cid": "15e39090c5a20de44",
+      "id": "15e6adfaa2d9445ae"
     }
   ],
   "orders": []

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 
 import { ItemService } from '../share/item.service';
@@ -13,8 +13,8 @@ import { CategoryService } from '../share/category.service';
     './category-detail.css'
   ]
 })
-export class CategoryDetailComponent implements OnInit {
-  category = {
+export class CategoryDetailComponent implements OnInit, AfterViewInit {
+  category: any = {
     id: '',
     name: '',
     unit: ''
@@ -38,12 +38,17 @@ export class CategoryDetailComponent implements OnInit {
     remark: ''
   };
 
-  constructor(private activatedRoute: ActivatedRoute,
-              private _itemService: ItemService,
-              private _categoryService: CategoryService) {
-  }
+  constructor(
+    private activatedRoute: ActivatedRoute,
+    private _itemService: ItemService,
+    private _categoryService: CategoryService,
+  ) { }
 
   ngOnInit() {
+
+  }
+
+  ngAfterViewInit() {
     this.getItems();
   }
 
@@ -88,7 +93,6 @@ export class CategoryDetailComponent implements OnInit {
   }
 
   saveItem(item) {
-    console.log(item);
     if (item.changed) {
       item.date = new Date().getTime();
       this._itemService.saveItem(item)
@@ -100,19 +104,13 @@ export class CategoryDetailComponent implements OnInit {
   }
 
   saveUnit($event) {
-    console.log($event.target.innerText)
     if (!$event.target.innerText) {
-      this.category.unit = '个';
+      $event.target.innerText = '个';
     }
     this._categoryService.saveCategory({
       id: this.category.id,
       unit: $event.target.innerText
     })
-      .subscribe(() => {
-        this._categoryService.getCategory(this.category.id)
-          .subscribe(datas => {
-            this.category = datas.data;
-          });
-      });
+      .subscribe();
   }
 }
