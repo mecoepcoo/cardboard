@@ -2,7 +2,7 @@
   "user": {
     "username": "admin",
     "password": "admin",
-    "auto": 1507102497721
+    "auto": 0
   },
   "categories": [
     {
@@ -14,17 +14,22 @@
       "id": "15e50fd797501514e",
       "name": "4324",
       "unit": "牛"
+    },
+    {
+      "id": "15f2e6966392d12c5",
+      "name": "rrr",
+      "unit": "个"
     }
   ],
   "items": [
     {
       "name": "测试",
-      "brand": "雕牌",
+      "brand": "你好呀",
       "model": "bbb",
       "standard": "60",
       "color": "蓝色",
       "price": "100",
-      "date": 1505052611369,
+      "date": 1508312509304,
       "remark": "没有",
       "cid": "15e39090c5a20de44",
       "id": "15e5251d657af67a5",
@@ -61,8 +66,8 @@
       "model": "ttt",
       "standard": "60",
       "color": "蓝色",
-      "price": "30",
-      "date": 1504752519238,
+      "price": "3",
+      "date": 1508312526465,
       "remark": "还有",
       "cid": "15e39090c5a20de44",
       "id": "15e52542ae241c76a",
@@ -70,15 +75,16 @@
     },
     {
       "name": "加入",
-      "brand": "六神",
+      "brand": "六32神",
       "model": "1",
       "standard": "16cm",
       "color": "蓝",
       "price": "15",
-      "date": 1505024895052,
+      "date": 1508399598403,
       "remark": "库存",
       "cid": "15e39090c5a20de44",
-      "id": "15e6a79caebcbf9d7"
+      "id": "15e6a79caebcbf9d7",
+      "changed": true
     },
     {
       "name": "测试3",
@@ -91,6 +97,55 @@
       "remark": "",
       "cid": "15e39090c5a20de44",
       "id": "15e6adfaa2d9445ae"
+    },
+    {
+      "name": "333",
+      "brand": "",
+      "model": "",
+      "standard": "",
+      "color": "",
+      "price": "444",
+      "date": 1508397865944,
+      "remark": "",
+      "cid": "15e39090c5a20de44",
+      "id": "15f3384fdd2581e21"
+    },
+    {
+      "name": "333",
+      "brand": "333",
+      "model": "",
+      "standard": "",
+      "color": "",
+      "price": "444",
+      "date": 1508399630238,
+      "remark": "",
+      "cid": "15e39090c5a20de44",
+      "id": "15f338505330173ab",
+      "changed": true
+    },
+    {
+      "name": "44",
+      "brand": "",
+      "model": "",
+      "standard": "4",
+      "color": "3",
+      "price": "3",
+      "date": 1508397992262,
+      "remark": "",
+      "cid": "15e39090c5a20de44",
+      "id": "15f3386e354029204"
+    },
+    {
+      "name": "3322",
+      "brand": "",
+      "model": "",
+      "standard": "",
+      "color": "",
+      "price": "4234",
+      "date": 1508400462722,
+      "remark": "",
+      "cid": "15e39090c5a20de44",
+      "id": "15f33aca96c5240e3"
     }
   ],
   "orders": []

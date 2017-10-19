@@ -13,6 +13,7 @@ import { MainComponent } from './main/main.component';
 import { DesktopToolbarComponent } from './desktop-toolbar/desktop-toolbar.component';
 import { SideMenuComponent } from './side-menu/side-menu.component';
 import { CategoryDetailComponent } from './category-detail/category-detail.component';
+import { MessageTipComponent } from './message-tip/message-tip.component';
 
 import { ToolsService } from './share/tools.service';
 import { UserService } from './share/user.service';
@@ -35,6 +36,7 @@ import { CookieService, CookieOptions } from 'angular2-cookie';
     SideMenuComponent,
     CheckedAllDirective,
     CategoryDetailComponent,
+    MessageTipComponent,
   ],
   imports: [
     BrowserModule,

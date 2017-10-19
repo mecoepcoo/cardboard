@@ -37,5 +37,13 @@ router.route('/items')
       message: lang.OK,
     });
   })
+  .delete((req, res, next) => {
+    const id = req.body.id;
+    db.get('items').remove({id: id}).write();
+    res.status(200).json({
+      status: 1,
+      message: lang.OK
+    });
+  });
 
 module.exports = router;

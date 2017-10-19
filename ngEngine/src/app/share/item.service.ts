@@ -7,7 +7,7 @@ import { Http, Headers, RequestOptions } from '@angular/http';
 import { Observable } from 'rxjs/Rx';
 
 import { Config } from './config';
-import { Item } from '../modal/item';
+import { Item } from '../model/item';
 
 @Injectable()
 export class ItemService {
@@ -47,6 +47,11 @@ export class ItemService {
       .catch(this.handleError);
   }
 
+  /**
+   * 保存修改过的项目
+   * @param item
+   * @returns {Observable<any>}
+   */
   saveItem(item): Observable<any> {
     const url = `${Config.apiRoot}items`;
     const body = JSON.stringify(item);
@@ -58,17 +63,24 @@ export class ItemService {
       .catch(this.handleError);
   }
 
-/*  doLogout(): Observable<any> {
-    const url = `${Config.apiRoot}login`;
+  /**
+   * 删除指定项目
+   * @param {string} itemId 项目id
+   * @returns {Observable<any>}
+   */
+  deleteItem(itemId: string): Observable<any> {
+    const url = `${Config.apiRoot}items`;
+    const body = JSON.stringify({id: itemId});
     const headers = new Headers({'Content-Type': 'application/json'});
     const options = new RequestOptions({
       headers: headers,
+      body: body
     });
 
     return this.http.delete(url, options)
       .map(this.extraData)
       .catch(this.handleError);
-  }*/
+  }
 
   private extraData(res) {
     const body = res.json();

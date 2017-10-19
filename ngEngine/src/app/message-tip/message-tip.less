@@ -1,0 +1,50 @@
+@f_size: 16px;
+
+.pre(@style, @value) {
+  -webkit-@{style}: @value;
+  -moz-@{style}: @value;
+  -ms-@{style}: @value;
+  -o-@{style}: @value;
+    @{style}: @value;
+}
+
+.box-shadow(@value) {
+  .pre(box-shadow, @value);
+}
+
+.border-radius(@value) {
+  .pre(border-radius, @value);
+}
+
+.transform(@value) {
+  .pre(transform, @value);
+}
+
+.transition(@value) {
+  .pre(transition, @value);
+}
+
+.user-select(@value) {
+  .pre(user-select, @value);
+}
+
+#message-dialog {
+  position: fixed;
+  z-index: 99999;
+  top: 35%;
+  left: 42%;
+  padding: 30px 50px;
+  color: white;
+  font-size: @f_size + 4;
+  .border-radius(5px);
+  .user-select(none);
+  .transition(opacity 0.8s);
+  opacity: 0;
+  filter: alpha(opacity=0);
+}
+.message-success {
+  background-color: rgba(102, 187, 106, .8);
+}
+.message-error {
+  background-color: rgba(255, 112, 67, .8);
+}

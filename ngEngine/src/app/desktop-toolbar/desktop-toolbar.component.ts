@@ -28,4 +28,8 @@ export class DesktopToolbarComponent implements OnInit {
         this.router.navigate(['/login']);
       });
   }
+
+  doRefresh() {
+    location.reload();
+  }
 }

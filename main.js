@@ -13,12 +13,12 @@ function createWindow () {
   win = new BrowserWindow({width: 1200, height: 700});
 
   // 加载应用的 index.html。
-  /*win.loadURL(url.format({
+  win.loadURL(url.format({
     pathname: path.join(__dirname + '/dist/', 'index.html'),
     protocol: 'file:',
     slashes: true
-  }));*/
-  win.loadURL('http://127.0.0.1:3308/');
+  }));
+  // win.loadURL('http://127.0.0.1:3308/');
 
   // 打开开发者工具。
   win.webContents.openDevTools();
