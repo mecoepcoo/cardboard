@@ -31,10 +31,15 @@ router.route('/category')
     });
   })
   .put((req, res, next) => {
-    const categoryInfo = req.body;
+    const id = req.body.id;
+    const name = req.body.name;
+    const unit = req.body.unit;
     db.get('categories')
-      .find({id: categoryInfo.id})
-      .assign({unit: categoryInfo.unit})
+      .find({id: id})
+      .assign({
+        name: name,
+        unit: unit
+      })
       .write();
     res.status(200).json({
       status: 1,

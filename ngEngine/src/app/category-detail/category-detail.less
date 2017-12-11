@@ -11,7 +11,7 @@
     cursor: default;
     .title {
       display: flex;
-      width: 300px;
+      width: 500px;
       align-items: center;
       h3 {
         margin-right: 50px;
@@ -64,6 +64,7 @@
     }
     .list-item {
       min-height: 40px;
+      line-height: 40px;
       display: flex;
       align-items: center;
       &:focus {
@@ -137,6 +138,83 @@
       background-color: #ffeeee;
       .id {
         font-weight: bold;
+      }
+    }
+  }
+}
+.modal-mask {
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, .5);
+}
+.my-modal {
+  display: none;
+  position: fixed;
+  z-index: 999;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  .dialog-modal {
+    user-select: none;
+    .dialog-content {
+      .modal-header {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 15px;
+        width: 100%;
+        height: 36px;
+        background-color: #f1f1f1;
+        box-sizing: border-box;
+        font-weight: bold;
+        cursor: default;
+        .modal-header-close {
+          display: block;
+          width: 20px;
+          height: 20px;
+          cursor: pointer;
+          color: #cecece;
+        }
+      }
+      .modal-body {
+        padding: 20px 30px;
+        .input-item {
+          display: flex;
+          flex-direction: row;
+          justify-content: flex-start;
+          align-items: center;
+          margin-bottom: 10px;
+          height: 38px;
+          label {
+            width: 88px;
+          }
+          input.modal-input {
+            display: block;
+            flex: 1;
+            height: 26px;
+            border: none;
+            border-bottom: 1px solid #ccc;
+            &:focus {
+              outline: none;
+            }
+          }
+        }
+      }
+      .modal-footer {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 90px 20px 90px;
+        .btn {
+          padding: 6px 10px;
+          border-radius: 3px;
+        }
       }
     }
   }

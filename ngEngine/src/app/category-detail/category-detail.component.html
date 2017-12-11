@@ -2,10 +2,10 @@
   <div class="header">
     <div class="title">
       <h3>分类：{{ category.name }}</h3>
-      <p>计数单位：<span [ngClass]="{'editable': editFlag.status}" spellcheck="false" (blur)="saveUnit($event)">{{ category.unit }}</span></p>
+      <p>计数单位：<span>{{ category.unit }}</span></p>
     </div>
     <div class="tools">
-      <button class="btn edit-category">修改分类信息</button>
+      <button class="btn edit-category" (click)="openEditCategoryModal()">修改分类信息</button>
       <button class="btn edit-lock" [ngClass]="{'btn-red': editFlag.status}" (click)="setEditFlag()">{{ editFlag.text }}</button>
     </div>
   </div>
@@ -57,21 +57,29 @@
   </div>
 
 </div>
-<div id="category-unit-modal" class="my-modal">
-  <div class="modal-mask"></div>
+
+<div class="modal-mask" [ngStyle]="{'display': mask.display ? 'block' : 'none'}"></div>
+<div id="category-unit-modal" class="my-modal" [ngStyle]="{'display': modal.display ? 'block' : 'none'}">
   <div class="dialog">
     <div class="dialog-modal">
       <div class="dialog-content">
-        <button class="modal-header-close"></button>
         <div class="modal-header">
-          <div class="modal-header-title"></div>
+          <div class="modal-header-title">修改分类信息</div>
+          <i class="iconfont modal-header-close" (click)="modal.close()">&#xe717;</i>
         </div>
         <div class="modal-body">
-
+          <div class="input-item">
+            <label for="category-name">分类名称：</label>
+            <input type="text" class="modal-input" id="category-name" spellcheck="false" [(ngModel)]="modalText.name">
+          </div>
+          <div class="input-item">
+            <label for="category-unit">计数单位：</label>
+            <input type="text" class="modal-input" id="category-unit" #categoryUnit spellcheck="false" [(ngModel)]="modalText.unit">
+          </div>
         </div>
         <div class="modal-footer">
-          <button class="btn btn-cancel">取消</button>
-          <button class="btn btn-ok">确定</button>
+          <button class="btn btn-red btn-ok" (click)="editCategory()">确定</button>
+          <button class="btn btn-cancel" (click)="modal.close()">取消</button>
         </div>
       </div>
     </div>

@@ -55,9 +55,13 @@ export class CategoryService {
       .catch(this.handleError);
   }
 
-  saveCategory(category): Observable<any> {
+  saveCategory(id: string, name: string, unit: string): Observable<any> {
     const url = `${Config.apiRoot}category`;
-    const body = JSON.stringify(category);
+    const body = JSON.stringify({
+      id: id,
+      name: name,
+      unit: unit
+    });
     const headers = new Headers({'Content-Type': 'application/json'});
     const options = new RequestOptions({headers: headers});
 

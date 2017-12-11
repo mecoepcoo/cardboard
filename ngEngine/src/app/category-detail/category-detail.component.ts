@@ -17,6 +17,7 @@ import { Config } from '../share/config';
 })
 export class CategoryDetailComponent implements OnInit, AfterViewInit {
   @ViewChild(MessageTipComponent) messageDialogComponent: MessageTipComponent;
+  @ViewChild('categoryUnit') categoryUnit;
 
   category: any = {
     id: '',
@@ -40,6 +41,38 @@ export class CategoryDetailComponent implements OnInit, AfterViewInit {
     price: '',
     date: new Date().getTime(),
     remark: ''
+  };
+
+  mask = {
+    display: false
+  };
+
+  modal = {
+    display: false,
+    open: () => {
+      this.modalText.id = this.category.id;
+      this.modalText.name = this.category.name;
+      this.modalText.unit = this.category.unit;
+      this.mask.display = true;
+      this.modal.display = true;
+      setTimeout(() => {
+        this.categoryUnit.nativeElement.focus();
+      }, 100);
+
+    },
+    close: () => {
+      this.modalText.id = '';
+      this.modalText.name = '';
+      this.modalText.unit = '';
+      this.mask.display = false;
+      this.modal.display = false;
+    }
+  };
+
+  modalText = {
+    id: '',
+    name: '',
+    unit: ''
   };
 
   constructor(
@@ -140,14 +173,18 @@ export class CategoryDetailComponent implements OnInit, AfterViewInit {
       });
   }
 
-  saveUnit($event) {
-    if (!$event.target.innerText) {
-      $event.target.innerText = '个';
-    }
-    this._categoryService.saveCategory({
-      id: this.category.id,
-      unit: $event.target.innerText
-    })
-      .subscribe();
+  editCategory() {
+    this._categoryService.saveCategory(this.modalText.id, this.modalText.name, this.modalText.unit)
+      .subscribe(datas => {
+        this.getItems();
+        this.modal.close();
+        this.messageDialogComponent.messageDialog.open(Config.message.SUCCESS, 1);
+      }, error => {
+        this.messageDialogComponent.messageDialog.open(Config.message.ERROR, 0);
+      });
+  }
+
+  openEditCategoryModal() {
+    this.modal.open();
   }
 }
