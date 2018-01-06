@@ -25,7 +25,7 @@ router.route('/category')
       name: name,
       unit: '个'
     }).write();
-    res.status(200).json({
+    return res.status(200).json({
       status: 1,
       message: lang.OK,
     });
@@ -41,9 +41,28 @@ router.route('/category')
         unit: unit
       })
       .write();
-    res.status(200).json({
+    return res.status(200).json({
       status: 1,
       message: lang.OK,
+    });
+  })
+  .delete((req, res, next) => {
+    const id = req.body.id;
+    const items = db.get('items')
+      .value();
+    items.forEach(item => {
+      if (item.cid === id) {
+        db.get('items').remove({
+          cid: item.cid
+        }).write();
+      }
+    });
+    db.get('categories').remove({
+      id: id
+    }).write();
+    return res.status(200).json({
+      status: 1,
+      message: lang.OK
     });
   });
 
@@ -51,7 +70,7 @@ router.route('/category/:id')
   .get((req, res, next) => {
     const id = req.params.id;
     const data = db.get('categories').find({id: id}).value();
-    res.status(200).json({
+    return res.status(200).json({
       status: 1,
       message: lang.OK,
       data: data

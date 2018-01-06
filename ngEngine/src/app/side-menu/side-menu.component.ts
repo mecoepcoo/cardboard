@@ -1,8 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { ToolsService } from '../share/tools.service';
 import { CategoryService } from '../share/category.service';
+import { MessageTipComponent } from '../message-tip/message-tip.component';
+import { Config } from '../share/config';
 
 @Component({
   selector: 'app-side-menu',
@@ -10,6 +12,8 @@ import { CategoryService } from '../share/category.service';
   styleUrls: ['./side-menu.css']
 })
 export class SideMenuComponent implements OnInit {
+  @ViewChild(MessageTipComponent) messageDialogComponent: MessageTipComponent;
+
   menuStatus = {
     category: true,
     order: false
@@ -39,6 +43,31 @@ export class SideMenuComponent implements OnInit {
   ];
 
   addCategoryName: string;
+
+  mask = {
+    display: false
+  };
+
+  modal = {
+    display: false,
+    open: () => {
+      this.mask.display = true;
+      this.modal.display = true;
+    },
+    close: () => {
+      this.modalText.id = '';
+      this.modalText.name = '';
+      this.modalText.inputName = '';
+      this.mask.display = false;
+      this.modal.display = false;
+    }
+  };
+
+  modalText = {
+    id: '',
+    name: '',
+    inputName: ''
+  };
 
   constructor(
     private _categoryService: CategoryService,
@@ -82,11 +111,11 @@ export class SideMenuComponent implements OnInit {
     const cname = this._toolsService.trim(name);
     return this._categoryService.addCategory(cname)
       .subscribe(data => {
+        this.addCategoryName = '';
         this.getCategoryList()
           .subscribe(() => {
             this.selectItem(this.categoryList.length - 1, this.categoryList, this.categoryList[this.categoryList.length - 1].id);
           });
-        console.log(data.message);
       });
   }
 
@@ -100,5 +129,29 @@ export class SideMenuComponent implements OnInit {
           this.categoryList[index].current = false;
         });
       });
+  }
+
+  openRemoveCategoryModal(id: string, name: string) {
+    this.modalText.inputName = '';
+    this.modalText.id = id;
+    this.modalText.name = name;
+    this.modal.open();
+  }
+
+  removeCategory() {
+    if (this.modalText.inputName === this.modalText.name) {
+      this._categoryService.removeCategory(this.modalText.id)
+        .subscribe(datas => {
+          this.modal.close();
+          this.messageDialogComponent.messageDialog.open(Config.message.SUCCESS, 1);
+          this.categoryList = [];
+          this.getCategoryList()
+            .subscribe(() => {
+              this.selectItem(0, this.categoryList, this.categoryList[0].id);
+            });
+        }, error => {
+          this.messageDialogComponent.messageDialog.open(Config.message.ERROR, 0);
+        });
+    }
   }
 }

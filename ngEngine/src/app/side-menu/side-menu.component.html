@@ -4,15 +4,14 @@
     <div class="menu-item" [ngClass]="{'active': menuStatus.order}" (click)="menuSwitch('order')">订单</div>
   </div>
   <div class="menu-container">
-    <div id="category" [ngClass]="{'activeMenu': menuStatus.category}" appCheckedAll>
+    <div id="category" [ngClass]="{'activeMenu': menuStatus.category}">
       <div class="head">
-        <input type="checkbox" id="category-check" class="check check-all">
-        <label for="category-check">共计3个分类</label>
+        <label for="category-check">共计{{ categoryList.length }}个分类</label>
       </div>
       <ul class="items-list">
         <li class="category-item" [ngClass]="{'active': category.current}" *ngFor="let category of categoryList;let i=index" (click)="selectItem(i, categoryList, category.id)">
-          <input type="checkbox" class="check">
           <span>{{ category.name }}</span>
+          <button class="btn btn-red btn-delete" (click)="openRemoveCategoryModal(category.id, category.name)">删除</button>
         </li>
       </ul>
       <div class="category-add">
@@ -37,3 +36,32 @@
     </div>
   </div>
 </div>
+
+<div class="modal-mask" [ngStyle]="{'display': mask.display ? 'block' : 'none'}"></div>
+
+<!-- 删除分类的modal -->
+<div id="category-remove-modal" class="my-modal" [ngStyle]="{'display': modal.display ? 'block' : 'none'}">
+  <div class="dialog">
+    <div class="dialog-modal">
+      <div class="dialog-content">
+        <div class="modal-header">
+          <div class="modal-header-title">删除分类</div>
+          <i class="iconfont modal-header-close" (click)="modal.close()">&#xe717;</i>
+        </div>
+        <div class="modal-body">
+          <div class="modal-tip">删除分类会移除该分类下的所有项目，确定要删除，<br>请输入"<span style="color: red;font-weight: bold;font-size: 22px;">{{modalText.name}}</span>"并点击确认按钮</div>
+          <div class="input-item">
+            <label for="category-name">分类名称：</label>
+            <input type="text" class="modal-input" id="category-name" spellcheck="false" [(ngModel)]="modalText.inputName">
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-red btn-ok" [ngClass]="{'disable': modalText.inputName!==modalText.name}" (click)="removeCategory()">确定</button>
+          <button class="btn btn-cancel" (click)="modal.close()">取消</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<app-message-tip></app-message-tip>
