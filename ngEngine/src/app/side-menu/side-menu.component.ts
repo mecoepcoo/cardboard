@@ -13,6 +13,7 @@ import { Config } from '../share/config';
 })
 export class SideMenuComponent implements OnInit {
   @ViewChild(MessageTipComponent) messageDialogComponent: MessageTipComponent;
+  @ViewChild('categoryName') categoryName;
 
   menuStatus = {
     category: true,
@@ -53,6 +54,9 @@ export class SideMenuComponent implements OnInit {
     open: () => {
       this.mask.display = true;
       this.modal.display = true;
+      setTimeout(() => {
+        this.categoryName.nativeElement.focus();
+      }, 100);
     },
     close: () => {
       this.modalText.id = '';

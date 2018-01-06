@@ -52,7 +52,7 @@
           <div class="modal-tip">删除分类会移除该分类下的所有项目，确定要删除，<br>请输入"<span style="color: red;font-weight: bold;font-size: 22px;">{{modalText.name}}</span>"并点击确认按钮</div>
           <div class="input-item">
             <label for="category-name">分类名称：</label>
-            <input type="text" class="modal-input" id="category-name" spellcheck="false" [(ngModel)]="modalText.inputName">
+            <input type="text" class="modal-input" id="category-name" spellcheck="false" [(ngModel)]="modalText.inputName" #categoryName>
           </div>
         </div>
         <div class="modal-footer">
